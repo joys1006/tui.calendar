@@ -1,6 +1,6 @@
 /*!
  * TOAST UI Calendar
- * @version v1.2.4-dooray | Fri Jun 01 2018
+ * @version v1.2.4-dooray | Thu May 31 2018
  * @author NHNEnt FE Development Lab <dl_javascript@nhnent.com>
  * @license MIT
  */
@@ -2618,13 +2618,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	/**
-	 * Add month. If month value is changed, date set to 1.
+	 * Add month.
 	 * @param {number} m - month to add
 	 * @returns {DW} wrapper object
 	 */
 	DW.prototype.addMonth = function(m) {
 	    var prevMonth = this.d.getMonth();
-	    this.d.setMonth(prevMonth + m, 1);
+	    var month = this.clone();
+	
+	    month.d.setMonth(prevMonth + m, 0);
+	    this.d.setMonth(prevMonth + m, Math.min(this.d.getDate(), month.d.getDate()));
 	
 	    return this;
 	};
