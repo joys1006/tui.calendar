@@ -74,7 +74,11 @@ DW.prototype.addMonth = function (m) {
         if (targetMonth === 1) {
             targetDaysOfMonth = leapYear ? 29 : 28;
         } else {
-            m > 0 ? clone.d.setMonth(targetMonth + 1, 0) : clone.d.setMonth(currentMonth, 0);
+            if (m > 0) {
+                clone.d.setMonth(targetMonth + 1, 0);
+            } else {
+                clone.d.setMonth(currentMonth, 0);
+            }
             targetDaysOfMonth = clone.d.getDate();
         }
     }
