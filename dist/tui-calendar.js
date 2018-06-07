@@ -1,6 +1,6 @@
 /*!
  * TOAST UI Calendar
- * @version v1.2.4-dooray.1 | Tue Jun 05 2018
+ * @version v1.2.4-dooray.1 | Thu Jun 07 2018
  * @author NHNEnt FE Development Lab <dl_javascript@nhnent.com>
  * @license MIT
  */
@@ -2634,7 +2634,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (targetMonth === 1) {
 	            targetDaysOfMonth = leapYear ? 29 : 28;
 	        } else {
-	            m > 0 ? clone.d.setMonth(targetMonth + 1, 0) : clone.d.setMonth(currentMonth, 0);
+	            if (m > 0) {
+	                clone.d.setMonth(targetMonth + 1, 0);
+	            } else {
+	                clone.d.setMonth(currentMonth, 0);
+	            }
 	            targetDaysOfMonth = clone.d.getDate();
 	        }
 	    }
